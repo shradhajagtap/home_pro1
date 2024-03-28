@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Show Information</title>
+{% endblock %}
+{% block content %}
+        <h2 class="text-decoration-underline text-center mt-2 mb-2 "> Information about India </h2>
+        <table class="table table-success table-striped mt-3 col-10 m-auto">
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th>State</th>
+                    <th>Capital</th>
+                    <th>Population</th>
+                    <th>Famous Food</th>
+                    <th>Popular Temple</th>
+                    <th>No Of Taluka</th>
+                    <th colspan="2" class="text-center"> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for india in obj %}
+                    <tr>
+                        <td>{{ india.id  }}</td>
+                        <td>{{ india.state }}</td>
+                        <td>{{ india.capital }}</td>
+                        <td>{{ india.population }}</td>
+                        <td>{{ india.famous_food }}</td>
+                        <td>{{ india.popular_temples }}</td>
+                        <td>{{ india.no_of_taluka }}</td>
+
+
+                        <td>
+                            <a href="{% url 'update_url'  india.id %}">
+                                <button class="btn btn-light col-12"><i class="bi bi-vector-pen"></i> &nbsp Update </button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{% url 'delete_url' india.id %}">
+                                <button class="btn btn-danger col-12"><i class="bi bi-trash"></i> &nbsp Delete </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+{% endblock %}
